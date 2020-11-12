@@ -1,3 +1,22 @@
+HELP.md
+.gradle
+build
+bin
+gradle/wrapper/gradle-wrapper.jar
+!**/src/main/**
+!**/src/test/**
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+.metadata
+.iml
+
 # Compiled class file
 *.class
 
@@ -21,3 +40,27 @@
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
+
+/target/
+.idea
+*.iml
+*.ipr
+.classpath
+.settings
+.project
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+out/
+
+###Local file
+Pilot*.java
+
+### VS Code ###
+.vscode/
+
+# Sonarlint plugin
+.idea/sonarlint
