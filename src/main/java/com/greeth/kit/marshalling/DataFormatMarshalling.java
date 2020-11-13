@@ -18,14 +18,24 @@ public class DataFormatMarshalling<T> {
         return xmlMapper.writeValueAsString(credential);
     }
 
-    public T toPojoFromXML(String xmlString, Class klass) throws JsonProcessingException {
+    public T toPojoFromXML(String xmlString, Class klass) throws MarshallingException {
         XmlMapper xmlMapper = new XmlMapper();
-        return  (T) xmlMapper.readValue(xmlString, klass);
+        try {
+            return  (T) xmlMapper.readValue(xmlString, klass);
+        } catch (JsonProcessingException e) {
+            logger.info("Exception in converting object", e);
+            throw new MarshallingException("Exception in converting xml to Object", e);
+        }
     }
 
-    public String toJsonString(T credential) throws JsonProcessingException {
+    public String toJsonString(T credential) throws MarshallingException {
         ObjectMapper mapper = new ObjectMapper();
-        return mapper.writeValueAsString(credential);
+        try {
+            return mapper.writeValueAsString(credential);
+        } catch (JsonProcessingException e) {
+            logger.info("Exception in converting json string", e);
+            throw new MarshallingException("Exception in converting Object to json string", e);
+        }
     }
 
     public T toPojoFromJson(String jsonInString, Class klass) throws MarshallingException {
